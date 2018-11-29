@@ -1,0 +1,88 @@
+version: '3.3'
+
+services:
+  redis01:
+    image: 'redis:latest'
+    container_name: redis01
+    command: --cluster-enabled yes --bind 0.0.0.0 --loglevel warning
+    restart: on-failure
+    ports:
+      - '7001:6379'
+      - '17001:16379'
+    networks:
+      redis_net:
+        ipv4_address: 172.20.250.11
+    volumes:
+      - '/home/user/redis/redis.conf:/usr/local/etc/redis/redis.conf'
+  redis02:
+    image: 'redis:latest'
+    container_name: redis02
+    command: --cluster-enabled yes --bind 0.0.0.0 --loglevel warning
+    restart: on-failure
+    ports:
+      - '7002:6379'
+      - '17002:16379'
+    networks:
+      redis_net:
+        ipv4_address: 172.20.250.12
+    volumes:
+      - '/home/user/redis/redis.conf:/usr/local/etc/redis/redis.conf'
+  redis03:
+    image: 'redis:latest'
+    container_name: redis03
+    command: --cluster-enabled yes --bind 0.0.0.0 --loglevel warning
+    restart: on-failure
+    ports:
+      - '7003:6379'
+      - '17003:16379'
+    networks:
+      redis_net:
+        ipv4_address: 172.20.250.13
+    volumes:
+      - '/home/user/redis/redis.conf:/usr/local/etc/redis/redis.conf'
+  redis04:
+    image: 'redis:latest'
+    container_name: redis04
+    command: --cluster-enabled yes --bind 0.0.0.0 --loglevel warning
+    restart: on-failure
+    ports:
+      - '7004:6379'
+      - '17004:16379'
+    networks:
+      redis_net:
+        ipv4_address: 172.20.250.14
+    volumes:
+      - '/home/user/redis/redis.conf:/usr/local/etc/redis/redis.conf'
+  redis05:
+    image: 'redis:latest'
+    container_name: redis05
+    command: --cluster-enabled yes --bind 0.0.0.0 --loglevel warning
+    restart: on-failure
+    ports:
+      - '7005:6379'
+      - '17005:16379'
+    networks:
+      redis_net:
+        ipv4_address: 172.20.250.15
+    volumes:
+      - '/home/user/redis/redis.conf:/usr/local/etc/redis/redis.conf'
+  redis06:
+    image: 'redis:latest'
+    container_name: redis06
+    command: --cluster-enabled yes --bind 0.0.0.0 --loglevel warning
+    restart: on-failure
+    ports:
+      - '7006:6379'
+      - '17006:16379'
+    networks:
+      redis_net:
+        ipv4_address: 172.20.250.16
+    volumes:
+      - '/home/user/redis/redis.conf:/usr/local/etc/redis/redis.conf'
+networks:
+  redis_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.250.0/24
